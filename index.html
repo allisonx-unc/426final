@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Comp 426 Final</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+
+
+button {
+  margin: 0 auto;
+    display: block;
+  display: flex;
+  padding: 6px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  background: linear-gradient(180deg, #4B91F7 0%, #367AF6 100%);
+   background-origin: border-box;
+  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+h3, h2, button { 
+  text-align: center;
+}
+
+h1 {
+  background-color: #93dcfd;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+}
+.container {
+  height: 200px;
+  position: relative;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+</style>
+</head>
+<body>
+    <h1 class = "text-center">Comp 426 Final</h1> 
+    <div style="text-align:center;">
+      <h2>Rock Paper Scissors</h2>
+    <header>Pick your feline opponent</header>
+    <button class="button is-info is-large" id="newCat" onclick="newCat()">Random Kitty</button>
+    <div id="catPic"></div>
+    </div>
+
+   <h2>Result: <span id="result"></span></h2>
+<div style="text-align:center;">
+    <button id="rock">rock</button>
+    <button id="paper">paper</button>
+    <button id="scissors">scissors</button>
+  </div>
+    <div></div>
+    <div style="text-align:center;">
+    <h3>Click here for a Joke that's sure to pop out ;)</h3>
+    <button class="btn" onclick="generateJoke()">Joke</button>
+    </div>
+    <h1 style="font-size: 200%">Love Calculator!</h1>
+    <div id="root"> </div>
+<script src="./node_modules/axios/dist/axios.js"></script>
+<script type="module" src="run.js"></script>
+<script src="rps.js" charset="utf-8"></script>
+<script src="joke.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+  function newCat() {
+      fetch('https://api.thecatapi.com/v1/images/search').then(response => response.json())
+          .then((data) => {
+              let catUrl = data[0].url
+              document.getElementById('catPic').innerHTML = `<img style='height: 30vh; width: auto; margin-left: auto; margin-right: auto' src=${catUrl}>`;
+          });
+  }
+</script>
+</body>
+</html>
+    
